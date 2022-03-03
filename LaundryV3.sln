@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaundryV3", "LaundryV3.csproj", "{EE67EF5A-D266-4A89-809B-4479856DE845}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE67EF5A-D266-4A89-809B-4479856DE845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE67EF5A-D266-4A89-809B-4479856DE845}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE67EF5A-D266-4A89-809B-4479856DE845}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE67EF5A-D266-4A89-809B-4479856DE845}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6DD09F66-E38A-49A0-A39E-7A7A7D2CC1F4}
+	EndGlobalSection
+EndGlobal
