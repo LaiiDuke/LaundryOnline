@@ -415,6 +415,8 @@
     <Content Include="Views\ItemOfInvoice\Details.cshtml" />
     <Content Include="Views\ItemOfInvoice\Edit.cshtml" />
     <Content Include="Views\ItemOfInvoice\Index.cshtml" />
+    <Content Include="Views\ServiceLaundries\Public.cshtml" />
+    <Content Include="Views\ServiceDetails\Public.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

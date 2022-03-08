@@ -20,6 +20,11 @@ namespace LaundryV3.Controllers
             return View(db.ServiceLaundries.ToList());
         }
 
+        public ActionResult Public()
+        {
+            return View(db.ServiceLaundries.ToList());
+        }
+
         // GET: ServiceLaundries/Details/5
         public ActionResult Details(int? id)
         {

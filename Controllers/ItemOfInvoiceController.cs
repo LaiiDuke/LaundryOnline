@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace LaundryV3.Controllers
 {
+    [Authorize]
     public class ItemOfInvoiceController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

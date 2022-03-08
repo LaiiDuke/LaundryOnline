@@ -21,6 +21,14 @@ namespace LaundryV3.Controllers
             return View(serviceDetails.ToList());
         }
 
+        public ActionResult Public()
+        {
+            var serviceDetails = db.ServiceDetails.Include(s => s.ServiceLaundry);
+            return View(serviceDetails.ToList());
+        }
+
+
+
         // GET: ServiceDetails/Details/5
         public ActionResult Details(int? id)
         {
