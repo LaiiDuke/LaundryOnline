@@ -124,8 +124,44 @@
         </dd>
 
     </dl>
+    <div class="container" style="padding: 0 30px;">
+        <h3>
+            List of Items
+        </h3>
+        <div class="row mt-5">
+            @foreach (var item in Model.ListItems)
+            {
+                <div class="col-md-3 d-flex align-items-center justify-content-center bg-secondary mb-4 mb-lg-0" style="height: 120px;">
+                    <div class="d-inline-flex">
+                        <div class="d-flex flex-column text-center">
+                            <span style="font-family: 'Libre Barcode 39'; font-size: 4vw; line-height: 0; margin-top: 2vw" >@Html.DisplayFor(i => item.Code)</span>
+                            <h5 class="text-white font-weight-medium" style="letter-spacing: 1vw">@Html.DisplayFor(i => item.Code)</h5>
+                            <p class="m-0 text-white">@Html.DisplayFor(i => item.Quantity) x @Html.DisplayFor(i => item.ServiceDetail.Name)</p>
+                            <p class="m-0 text-white">@Html.DisplayFor(i => item.Price)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 d-flex align-items-center justify-content-center bg-primary mb-4 mb-lg-0" style="height: 120px;">
+                    <div class="d-inline-flex text-left">
+                        <div class="d-flex flex-column">
+                            <p class="m-0 text-white">
+                                @Html.ActionLink("Edit", "Edit", "ItemOfInvoice", new { id = item.Id }, new { @class = "fa fa-pen text-white m-0 mr-3" })
+                                @Html.ActionLink("Details", "Details", "ItemOfInvoice", new { id = item.Id }, new { @class = "fa fa-info text-white m-0 mr-3" })
+                                @Html.ActionLink("Delete", "Delete", "ItemOfInvoice", new { id = item.Id }, new { @class = "fa fa-circle-trash text-white m-0 mr-3" })
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+        <div class="my-3">
+            @Html.ActionLink("Add Item", "AddItem", "ItemOfInvoice", new { id = Model.Id }, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-secondary" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
 </p>

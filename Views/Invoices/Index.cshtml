@@ -30,10 +30,10 @@
         <th>
             @Html.DisplayNameFor(model => model.Code)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.CreateAt)
         </th>
-        @*<th>
+        <th>
             @Html.DisplayNameFor(model => model.PickAt)
         </th>
         <th>
@@ -77,10 +77,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.Code)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.CreateAt)
         </td>
-        @*<td>
+        <td>
             @Html.DisplayFor(modelItem => item.PickAt)
         </td>
         <td>
@@ -102,9 +102,9 @@
             @Html.DisplayFor(modelItem => item.PayMethod)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-secondary" })
+            @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

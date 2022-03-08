@@ -98,6 +98,39 @@ namespace LaundryV3.Controllers
             return View(invoiceItem);
         }
 
+        // GET: InvoiceItems/AddItem/5
+        public ActionResult AddItem(int? id)
+        {
+            ViewBag.InvoiceId = new SelectList(db.Invoices.Where(In => In.Id == id), "Id", "Description");
+            ViewBag.ServiceDetailId = new SelectList(db.ServiceDetails, "Id", "Name");
+            return View();
+        }
+
+        // POST: InvoiceItems/AddItem/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddItem([Bind(Include = "Id,Price,Quantity,Code,ServiceDetailId,InvoiceId")] InvoiceItem invoiceItem)
+        {
+            ServiceDetail serviceDetail = db.ServiceDetails.Find(invoiceItem.ServiceDetailId);
+            invoiceItem.Price = invoiceItem.Quantity * serviceDetail.Price;
+            invoiceItem.Code = invoiceItem.Id + serviceDetail.Id + (DateTimeOffset.Now.ToUnixTimeSeconds() - 1640000000).ToString();
+
+            Invoice invoice = db.Invoices.Find(invoiceItem.InvoiceId);
+            invoice.Price = invoice.Price + invoiceItem.Price;
+            if (ModelState.IsValid)
+            {
+                db.Entry(invoice).State = EntityState.Modified;
+                db.InvoiceItems.Add(invoiceItem);
+                db.SaveChanges();
+                return RedirectToAction("Details/" + invoiceItem.InvoiceId, "Invoices");
+            }
+            ViewBag.InvoiceId = new SelectList(db.Invoices, "Id", "Description", invoiceItem.InvoiceId);
+            ViewBag.ServiceDetailId = new SelectList(db.ServiceDetails, "Id", "Name", invoiceItem.ServiceDetailId);
+            return RedirectToRoute("Invoices/Details/" + invoiceItem.InvoiceId);
+        }
+
         // GET: InvoiceItems/Delete/5
         public ActionResult Delete(int? id)
         {

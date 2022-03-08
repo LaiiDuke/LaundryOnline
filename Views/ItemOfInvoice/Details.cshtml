@@ -1,0 +1,66 @@
+﻿@model LaundryV3.Models.InvoiceItem
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>InvoiceItem</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Invoice
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Invoice.Description)
+        </dd>
+
+        <dt>
+            ServiceDetail
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceDetail.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            <div class="col-md-3 d-flex align-items-center justify-content-center bg-secondary mb-4 mb-lg-0" style="height: 80px;">
+                <div class="d-inline-flex">
+                    <div class="d-flex flex-column text-center">
+                        <span style="font-family: 'Libre Barcode 39'; font-size: 4vw; line-height: 0; margin-top: 2vw">@Html.DisplayFor(i => i.Code)</span>
+                        <h5 class="text-white font-weight-medium" style="letter-spacing: 1vw">@Html.DisplayFor(i => i.Code)</h5>
+                    </div>
+                </div>
+            </div>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-secondary" })
+    @Html.ActionLink("Back Invoice", "Details", "Invoices", new { id = Model.InvoiceId }, new { @class = "btn btn-primary" })
+</p>

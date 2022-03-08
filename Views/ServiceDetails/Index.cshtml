@@ -13,7 +13,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ServiceLaundry.Name)
+            Service
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -42,9 +42,9 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new { @class = "btn btn-secondary"})
+            @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

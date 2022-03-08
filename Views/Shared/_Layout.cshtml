@@ -15,6 +15,7 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href='https://fonts.googleapis.com/css?family=Libre Barcode 39' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
@@ -70,28 +71,40 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    @if (Request.IsAuthenticated) {
                     <div class="navbar-nav ml-auto py-0">
+
+                        @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-item nav-link active" })
                         @Html.ActionLink("New Customer", "Create", "Customers", null, new { @class = "nav-item nav-link" })
                         @Html.ActionLink("New Invoice", "Create", "Invoices", null, new { @class = "nav-item nav-link" })
-                        @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-item nav-link active" })
-                        @Html.ActionLink("About", "About", "Home", null, new { @class = "nav-item nav-link" })
                         @Html.ActionLink("Services", "Index", "ServiceLaundries", null, new { @class = "nav-item nav-link" })
                         @Html.ActionLink("Pricing", "Index", "ServiceDetails", null, new { @class = "nav-item nav-link" })
-                        @*<a href="index.html" class="nav-item nav-link active">Home</a>
-        <a href="about.html" class="nav-item nav-link">About</a>
-        <a href="service.html" class="nav-item nav-link">Services</a>
-        <a href="pricing.html" class="nav-item nav-link">Pricing</a>*@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
-
-                                <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                                <a href="single.html" class="dropdown-item">Blog Detail</a>
+                                @Html.ActionLink("Customers", "Index", "Customers", null, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Invoices", "Index", "Invoices", null, new { @class = "dropdown-item" })
                             </div>
                         </div>
-                        @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-item nav-link" })
-                        @*<a href="contact.html" class="nav-item nav-link">Contact</a>*@
                     </div>
+                    }
+                    else {
+                        <div class="navbar-nav ml-auto py-0">
+                            @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-item nav-link active" })
+                            @Html.ActionLink("About", "About", "Home", null, new { @class = "nav-item nav-link" })
+                            @Html.ActionLink("Services", "Public", "ServiceLaundries", null, new { @class = "nav-item nav-link" })
+                            @Html.ActionLink("Pricing", "Public", "ServiceDetails", null, new { @class = "nav-item nav-link" })
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                                <div class="dropdown-menu border-0 rounded-0 m-0">
+                                    @Html.ActionLink("Blog", "Index", "ServiceLaundries", null, new { @class = "dropdown-item" })
+                                    @Html.ActionLink("More", "Index", "ServiceDetails", null, new { @class = "dropdown-item" })
+                                </div>
+                            </div>
+                            @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-item nav-link" })
+                        </div>
+                    }
+
                 </div>
             </nav>
         </div>

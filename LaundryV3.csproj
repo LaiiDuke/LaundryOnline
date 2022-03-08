@@ -185,6 +185,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InvoiceItemsController.cs" />
     <Compile Include="Controllers\InvoicesController.cs" />
+    <Compile Include="Controllers\ItemOfInvoiceController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ServiceDetailsController.cs" />
     <Compile Include="Controllers\ServiceLaundriesController.cs" />
@@ -407,6 +408,13 @@
     <Content Include="Views\Invoices\Details.cshtml" />
     <Content Include="Views\Invoices\Edit.cshtml" />
     <Content Include="Views\Invoices\Index.cshtml" />
+    <Content Include="Views\InvoiceItems\AddItem.cshtml" />
+    <Content Include="Views\ItemOfInvoice\AddItem.cshtml" />
+    <Content Include="Views\ItemOfInvoice\Create.cshtml" />
+    <Content Include="Views\ItemOfInvoice\Delete.cshtml" />
+    <Content Include="Views\ItemOfInvoice\Details.cshtml" />
+    <Content Include="Views\ItemOfInvoice\Edit.cshtml" />
+    <Content Include="Views\ItemOfInvoice\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
