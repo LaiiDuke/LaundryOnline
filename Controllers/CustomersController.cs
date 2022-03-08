@@ -15,12 +15,15 @@ namespace LaundryV3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Customers
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.Customers.ToList());
         }
 
         // GET: Customers/Details/5
+        [Authorize]
+
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +39,7 @@ namespace LaundryV3.Controllers
         }
 
         // GET: Customers/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +50,7 @@ namespace LaundryV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "Id,Name,Phone,Email,Address")] Customer customer)
         {
             if (ModelState.IsValid)
@@ -58,7 +63,35 @@ namespace LaundryV3.Controllers
             return View(customer);
         }
 
+        public ActionResult CreatePublic()
+        {
+            return View();
+        }
+
+        // POST: Customers/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreatePublic([Bind(Include = "Id,Name,Phone,Email,Address")] Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Customers.Add(customer);
+                db.SaveChanges();
+                return RedirectToAction("CreateSuccess");
+            }
+
+            return View(customer);
+        }
+
+        public ActionResult CreateSuccess()
+        {
+            return View();
+        }
+
         // GET: Customers/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +111,7 @@ namespace LaundryV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "Id,Name,Phone,Email,Address")] Customer customer)
         {
             if (ModelState.IsValid)
@@ -90,6 +124,7 @@ namespace LaundryV3.Controllers
         }
 
         // GET: Customers/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -107,6 +142,7 @@ namespace LaundryV3.Controllers
         // POST: Customers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             Customer customer = db.Customers.Find(id);

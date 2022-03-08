@@ -189,6 +189,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ServiceDetailsController.cs" />
     <Compile Include="Controllers\ServiceLaundriesController.cs" />
+    <Compile Include="Controllers\T.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -417,6 +418,8 @@
     <Content Include="Views\ItemOfInvoice\Index.cshtml" />
     <Content Include="Views\ServiceLaundries\Public.cshtml" />
     <Content Include="Views\ServiceDetails\Public.cshtml" />
+    <Content Include="Views\Customers\CreatePublic.cshtml" />
+    <Content Include="Views\Customers\CreateSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

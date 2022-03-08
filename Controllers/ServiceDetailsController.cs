@@ -15,6 +15,7 @@ namespace LaundryV3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ServiceDetails
+        [Authorize]
         public ActionResult Index()
         {
             var serviceDetails = db.ServiceDetails.Include(s => s.ServiceLaundry);
@@ -30,6 +31,7 @@ namespace LaundryV3.Controllers
 
 
         // GET: ServiceDetails/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -45,6 +47,7 @@ namespace LaundryV3.Controllers
         }
 
         // GET: ServiceDetails/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.ServiceLaundryId = new SelectList(db.ServiceLaundries, "Id", "Name");
@@ -56,6 +59,7 @@ namespace LaundryV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "Id,Name,Price,Description,ServiceLaundryId")] ServiceDetail serviceDetail)
         {
             if (ModelState.IsValid)
@@ -70,6 +74,7 @@ namespace LaundryV3.Controllers
         }
 
         // GET: ServiceDetails/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -90,6 +95,7 @@ namespace LaundryV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "Id,Name,Price,Description,ServiceLaundryId")] ServiceDetail serviceDetail)
         {
             if (ModelState.IsValid)
@@ -103,6 +109,7 @@ namespace LaundryV3.Controllers
         }
 
         // GET: ServiceDetails/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -120,6 +127,7 @@ namespace LaundryV3.Controllers
         // POST: ServiceDetails/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             ServiceDetail serviceDetail = db.ServiceDetails.Find(id);

@@ -10,6 +10,7 @@ using LaundryV3.Models;
 
 namespace LaundryV3.Controllers
 {
+    [Authorize]
     public class InvoiceItemsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

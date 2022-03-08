@@ -89,9 +89,10 @@ namespace LaundryV3.Controllers
         {
             if (ModelState.IsValid)
             {
-                InvoiceItem invoiceItemOld = db.InvoiceItems.Find(invoiceItem.Id);
-                Invoice invoice = db.Invoices.Find(invoiceItemOld.InvoiceId);
-                invoice.Price = invoice.Price - invoiceItemOld.Price;
+                Invoice invoice = db.Invoices.Find(invoiceItem.InvoiceId);
+                invoice.Price = invoice.Price - invoiceItem.Price;
+                ServiceDetail serviceDetail = db.ServiceDetails.Find(invoiceItem.ServiceDetailId);
+                invoiceItem.Price = invoiceItem.Quantity * serviceDetail.Price;
                 invoice.Price = invoice.Price + invoiceItem.Price;
                 db.Entry(invoiceItem).State = EntityState.Modified;
                 db.SaveChanges();

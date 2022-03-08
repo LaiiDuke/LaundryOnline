@@ -15,6 +15,7 @@ namespace LaundryV3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ServiceLaundries
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.ServiceLaundries.ToList());
@@ -26,6 +27,7 @@ namespace LaundryV3.Controllers
         }
 
         // GET: ServiceLaundries/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -41,6 +43,7 @@ namespace LaundryV3.Controllers
         }
 
         // GET: ServiceLaundries/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -51,6 +54,7 @@ namespace LaundryV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "Id,Name,PriceFrom,PriceTo,Description")] ServiceLaundry serviceLaundry)
         {
             if (ModelState.IsValid)
@@ -64,6 +68,7 @@ namespace LaundryV3.Controllers
         }
 
         // GET: ServiceLaundries/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -83,6 +88,7 @@ namespace LaundryV3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "Id,Name,PriceFrom,PriceTo,Description")] ServiceLaundry serviceLaundry)
         {
             if (ModelState.IsValid)
@@ -95,6 +101,7 @@ namespace LaundryV3.Controllers
         }
 
         // GET: ServiceLaundries/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -112,6 +119,7 @@ namespace LaundryV3.Controllers
         // POST: ServiceLaundries/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             ServiceLaundry serviceLaundry = db.ServiceLaundries.Find(id);
